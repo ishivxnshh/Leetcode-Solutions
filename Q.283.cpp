@@ -32,7 +32,7 @@ public:
         // }
 
 
-        //optimal-approach
+        //Optimal approach
         // int l = 0;
         // for(int j=0;j<n;j++)
         // {
