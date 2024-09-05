@@ -14,18 +14,38 @@ public:
         // int n = nums.size();
         // return nums[n/2];  // Majority element is at index n/2 after sorting
 
-        // Better Approach(TC: )
-        int n = nums.size();
-        unordered_map<int, int> m;
-        for(int i = 0; i < n; i++){
-            m[nums[i]]++;
-        }
-        for(auto x: m){
-            if(x.second > n/2){
-                return x.first;
-            }
-        }
-        return 0;
+        // Better Approach(TC: n, SC: N)
+        // int n = nums.size();
+        // unordered_map<int, int> m;
+        // for(int i = 0; i < n; i++){
+        //     m[nums[i]]++;
+        // }
+        // for(auto x: m){
+        //     if(x.second > n/2){
+        //         return x.first;
+        //     }
+        // }
+        // return 0;
+
+        //Optimal Approach - Moore Voting Algorithm(TC: N, SC: 1)
+        // int count = 0, candidate = nums[0];
+        // for(int i = 0; i < nums.size(); i++)
+        // {
+        //       if(count == 0)
+        //       {
+        //         count = 1;
+        //         candidate = nums[i];
+        //       }
+        //       else if(nums[i]==candidate)
+        //       {
+        //         count++;
+        //       }
+        //       else
+        //       {
+        //         count--;
+        //       }
+        // }
+        // return candidate;
     }
 };
 
