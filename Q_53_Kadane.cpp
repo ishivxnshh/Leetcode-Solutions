@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <limits.h>
 using namespace std;
 
 class Solution {
@@ -42,7 +43,27 @@ public:
         // }
         // return maxi;
 
-        // Pri
+        // Approach to store the starting index and the ending index of the subarray with maximum sum
+    //     long long maxi = INT_MIN; // maximum sum
+    //     long long sum = 0;
+    //     int start = 0;
+    //     int ansStart = -1, ansEnd = -1;
+    //     for (int i = 0; i < nums.size(); i++) 
+    //     {
+    //         if (sum == 0) start = i; // starting index
+    //         sum += nums[i];
+    //         if (sum > maxi) 
+    //         {
+    //             maxi = sum;
+    //             ansStart = start;
+    //             ansEnd = i;
+    //         }
+    //         if (sum < 0) 
+    //         {
+    //             sum = 0;
+    //         }
+    //     }
+    //     //starting and ending point saved !!
     }
 };
 
