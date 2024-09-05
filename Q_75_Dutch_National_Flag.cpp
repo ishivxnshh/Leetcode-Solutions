@@ -5,7 +5,11 @@ using namespace std;
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        // Dutch National Flag algorithm
+        // Brute Force Approach any sorting Technique(Specially Merge Sort)
+
+        // (Better) Counting 0s,1s and 2s and then updating the array
+
+        // Dutch National Flag algorithm(Optimal)
         int start = 0, mid = 0, end = nums.size() - 1;
         while (mid <= end) {
             if (nums[mid] == 0) {
