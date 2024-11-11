@@ -26,8 +26,84 @@ public:
         //     answer.push_back(mul);
         // }
         // return answer;
+
+        // Optimized Approach 1(TC: N, SC: N)
+        // int n = nums.size();
+        // vector<int> preffix(n, 1);
+        // vector<int> suffix(n, 1);
+        // vector<int> output(n);
+        // int prod = 1;
+        // for(int i = 0;i<n;i++)
+        // {
+        //     prod*=nums[i];
+        //     preffix[i] = prod;
+        // }
+        // int prod2 = 1;
+        // for(int i = n-1;i>=0;i--)
+        // {
+        //     prod2*=nums[i];
+        //     suffix[i] = prod2;
+        // }
+        // for(int i=0;i<n;i++)
+        // {
+        //     if(i==0)
+        //     {
+        //         output[i] = suffix[i+1];
+        //     }
+        //     else if(i==n-1)
+        //     {
+        //         output[i] = preffix[i-1];
+        //     }
+        //     else
+        //     {
+        //         output[i] = preffix[i-1]*suffix[i+1];
+        //     }
+        // }
+        // return output;
                 
-        
+        // Optimized Approach 2(TC: N, SC: N)
+        // int n = nums.size();
+        // vector<int> preffix(n, 1);
+        // vector<int> output(n);
+        // int prod = 1;
+        // for(int i = 0;i<n;i++)
+        // {
+        //     prod*=nums[i];
+        //     preffix[i] = prod;
+        // }
+        // int res=1;
+        // for(int i=n-1;i>=0;i--)
+        // {
+        //     if(i==0)
+        //     {
+        //         output[i] = res;
+        //     }
+        //     else if(i==n-1)
+        //     {
+        //         output[i] = preffix[i-1];
+        //     }
+        //     else
+        //     {
+        //         output[i] = preffix[i-1]*res;
+        //     }
+        //     res*=nums[i];
+        // }
+        // return output;
+
+        // Optimized Approach 3(TC: N, SC: N)
+        int n = nums.size();
+        vector<int> output(n, 1);
+        int prefix = 1;
+        for (int i = 0; i < n; i++) {
+            output[i] = prefix;
+            prefix *= nums[i];
+        }
+        int suffix = 1;
+        for (int i = n - 1; i >= 0; i--) {
+            output[i] *= suffix;
+            suffix *= nums[i];
+        }
+        return output;
     }
 };
 
