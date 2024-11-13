@@ -18,8 +18,23 @@ public:
     //         }
     //     }
     //     return count;
-        
-        
+
+    // Optimal Approach(TC: N, SC:1)
+        int product = 1;
+        int result = 0;
+        int stindex = 0, endindex = 0;
+        while(endindex < nums.size())
+        {
+            product*=nums[endindex];
+            while(product>=k && stindex<=endindex)
+            {
+                product/=nums[stindex];
+                stindex++;
+            }
+            result += (endindex-stindex+1);
+            endindex++;
+        }
+        return result;
     }
 };
 
