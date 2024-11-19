@@ -1,13 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <string>
+#include <unordered_set>
 using namespace std;
 
 class Solution {
 public:
     bool reportSpam(vector<string>& message, vector<string>& bannedWords) {
 
-        // Brute-Force Approach(TLE, TC: M*N, SC:1)
+        // Brute-Force Approach (TLE, TC: M*N, SC:1)
         // int count = 0;
         // for (auto st : message) {
         //     if (check(st, bannedWords))
@@ -17,7 +18,21 @@ public:
         // }
         // return false;
 
-        // 
+        // Optimal Approach (TC: m+n, SC:n)
+        unordered_set<string> st;
+        for(auto it1:bannedWords)
+        {
+            st.insert(it1);
+        }
+        int count = 0;
+        for(auto it1: message)
+        {
+            if(st.find(it1)!=st.end())
+                count++;
+            if(count>=2)
+                return true;
+        }
+        return false;
     }
 
     bool check(string s, vector<string>& arr) {

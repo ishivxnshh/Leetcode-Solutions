@@ -32,7 +32,22 @@ public:
         // }
         // return sum;
 
-        
+        // Brian Kernighan’s Algoithm
+        //optimized soln (TC: nLogn, sc: 1)
+        int sum = 0;
+        for(int i=0;i<nums.size();i++)
+        {
+            int count = 0;
+            int temp = i;
+            while(temp>0)
+            {
+                temp = temp&(temp-1);
+                count++;
+            } 
+            if(count==k)
+                sum+=nums[i];
+        }
+        return sum;
     }
 };
 
