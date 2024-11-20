@@ -8,20 +8,20 @@ public:
     int maxSubArray(vector<int>& nums) {
 
         // Brute Force Approach (TC: n^3, SC: 1)
-        // int max = nums[0];
-        // for (int i = 0; i < nums.size(); i++) 
-        // { 
-        //     for (int j = i; j < nums.size(); j++) 
-        //     {
-        //         int sum = 0;
-        //         for (int k = i; k <= j; k++) 
-        //         {
-        //             sum += nums[k];
-        //         }
-        //         if(sum > max)
-        //             max = sum;
-        //     }
-        // }
+        int max = nums[0];
+        for (int i = 0; i < nums.size(); i++) 
+        { 
+            for (int j = i; j < nums.size(); j++) 
+            {
+                int sum = 0;
+                for (int k = i; k <= j; k++) 
+                {
+                    sum += nums[k];
+                }
+                if(sum > max)
+                    max = sum;
+            }
+        }
 
         // Better Approach (TC: n^2, SC: 1)
         // int max = nums[0];
