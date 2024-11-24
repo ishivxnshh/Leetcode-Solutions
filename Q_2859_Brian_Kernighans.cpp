@@ -41,7 +41,7 @@ public:
             int temp = i;
             while(temp>0)
             {
-                temp = temp&(temp-1);
+                temp = temp&(temp-1); 
                 count++;
             } 
             if(count==k)
