@@ -27,7 +27,7 @@ public:
         // }
         // return 0;
 
-        //Optimal Approach - Moore Voting Algorithm(TC: N, SC: 1)
+        //Optimal Approach - Boyer Moore Voting Algorithm(TC: N, SC: 1)
         // int count = 0, candidate = nums[0];
         // for(int i = 0; i < nums.size(); i++)
         // {
