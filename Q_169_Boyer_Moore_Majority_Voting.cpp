@@ -38,7 +38,7 @@ public:
         //       }
         //       else if(nums[i]==candidate)
         //       {
-        //         count++;
+        //         count++; 
         //       }
         //       else
         //       {
