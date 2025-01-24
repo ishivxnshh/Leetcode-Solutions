@@ -90,7 +90,7 @@ public:
         // }
         // return output;
 
-        // Optimized Approach 3(TC: N, SC: N)
+        // Optimized Approach 3(TC: N, SC: 1)
         int n = nums.size();
         vector<int> output(n, 1);
         int prefix = 1;
