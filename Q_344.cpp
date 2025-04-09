@@ -48,3 +48,17 @@ int main()
 
     return 0;
 }
+
+
+// USING RECURSION 
+
+// void abcd(int i, int j, vector<char>& s)
+// {
+//     if(i >= j)
+//         return;
+//     swap(s[i], s[j]);
+//     abcd(i + 1, j - 1, s);
+// }
+// void reverseString(vector<char>& s) {
+//     abcd(0, s.size() - 1, s);
+// }
