@@ -15,25 +15,35 @@ class Solution
 public:
     ListNode *middleNode(ListNode *head)
     {
-        ListNode *temp = head;
-        int length = 0;
+        // B-F Approach (TC: O(n + n/2) SC: O(1))
+        // ListNode *temp = head;
+        // int length = 0;
 
-        while (temp != nullptr)
+        // while (temp != nullptr)
+        // {
+        //     length++;
+        //     temp = temp->next;
+        // }
+
+        // int mid = length / 2;
+        // int i = 0;
+
+        // while (i < mid)
+        // {
+        //     head = head->next;
+        //     i++;
+        // }
+        // return head;
+
+        // Optimal Approach (TC: O(n/2) SC: O(1))
+        ListNode* slow = head;
+        ListNode* fast = head;
+        while (fast != NULL && fast->next != NULL)
         {
-            length++;
-            temp = temp->next;
+            slow = slow -> next;
+            fast = fast -> next -> next;
         }
-
-        int mid = length / 2;
-        int i = 0;
-
-        while (i < mid)
-        {
-            head = head->next;
-            i++;
-        }
-
-        return head;
+        return slow;
     }
 };
 
