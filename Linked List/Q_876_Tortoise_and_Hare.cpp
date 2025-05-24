@@ -35,7 +35,7 @@ public:
         // }
         // return head;
 
-        // Optimal Approach (TC: O(n/2) SC: O(1))
+        // Optimal Approach (Tortoise & Hare Approach) (TC: O(n/2) SC: O(1))
         ListNode* slow = head;
         ListNode* fast = head;
         while (fast != NULL && fast->next != NULL)
