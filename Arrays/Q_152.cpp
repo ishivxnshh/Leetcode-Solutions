@@ -6,9 +6,9 @@ class Solution
 public:
     int maxProduct(vector<int>& nums)
     {
+        // tc: O(2n)
         int maxi = INT_MIN;
         int currentProd = 1;
-
         for (int i = 0; i < nums.size(); i++)
         {
             currentProd *= nums[i];
@@ -16,9 +16,7 @@ public:
             if (currentProd == 0)
                 currentProd = 1;
         }
-
         currentProd = 1;
-
         for (int i = nums.size() - 1; i >= 0; i--)
         {
             currentProd *= nums[i];
@@ -26,7 +24,20 @@ public:
             if (currentProd == 0)
                 currentProd = 1;
         }
+        return maxi;
 
+        // tc: O(n)
+        int maxi = INT_MIN;
+        int prefix = 1;
+        int suffix = 1;
+        for (int i = 0; i < nums.size(); i++)
+        {
+            if (prefix == 0) prefix = 1;
+            if (suffix == 0) suffix = 1;
+            prefix *= nums[i];
+            suffix *= nums[nums.size() - i - 1];
+            maxi = max(maxi, max(prefix, suffix));
+        }
         return maxi;
     }
 };
