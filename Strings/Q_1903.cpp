@@ -7,14 +7,9 @@ class Solution
 public:
     string largestOddNumber(string num)
     {
-        if (num.back() % 2 == 1) // If last digit is odd, return full string
-        {
-            return num;
-        }
-
         for (int i = num.length() - 1; i >= 0; i--)
         {
-            if ((num[i] - '0') % 2 == 1) // Convert char to int and check if odd
+            if ((num[i] - '0') % 2 == 1)
             {
                 return num.substr(0, i + 1);
             }

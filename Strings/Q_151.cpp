@@ -10,36 +10,36 @@ public:
     {
 
         // Using extra space (time: O(n), space: O(n))
-        int i = 0;
-        string temp = "";
-        vector<string> words;
-        while (i < s.size())
-        {
-            if (s[i] == ' ' && i > 0 && s[i - 1] != ' ')
-            {
-                words.push_back(temp);
-                temp = "";
-            }
-            else if (s[i] != ' ')
-            {
-                temp += s[i];
-            }
-            if (i == s.size() - 1 && !temp.empty())
-            {
-                words.push_back(temp);
-            }
-            i++;
-        }
-        temp = "";
-        for (int i = words.size() - 1; i >= 0; i--)
-        {
-            temp += words[i];
-            if (i > 0)
-            {
-                temp += ' ';
-            }
-        }
-        return temp;
+        // int i = 0;
+        // string temp = "";
+        // vector<string> words;
+        // while (i < s.size())
+        // {
+        //     if (s[i] == ' ' && i > 0 && s[i - 1] != ' ')
+        //     {
+        //         words.push_back(temp);
+        //         temp = "";
+        //     }
+        //     else if (s[i] != ' ')
+        //     {
+        //         temp += s[i];
+        //     }
+        //     if (i == s.size() - 1 && !temp.empty())
+        //     {
+        //         words.push_back(temp);
+        //     }
+        //     i++;
+        // }
+        // temp = "";
+        // for (int i = words.size() - 1; i >= 0; i--)
+        // {
+        //     temp += words[i];
+        //     if (i > 0)
+        //     {
+        //         temp += ' ';
+        //     }
+        // }
+        // return temp;
 
         // Two pointer approach (time: O(n), space: O(1))
         int left = 0, right = s.size() - 1;
