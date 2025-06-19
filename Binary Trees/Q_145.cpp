@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <stack>
 using namespace std;
 
 /**
@@ -30,9 +31,59 @@ public:
 
     vector<int> postorderTraversal(TreeNode *root)
     {
-        vector<int> res;
-        pO(root, res);
-        return res;
+        // vector<int> res;
+        // pO(root, res);
+        // return res;
+
+        // iterative approach using two stacks
+        // if(!root) return {};
+        // vector<int> postOrder;
+        // stack<TreeNode*> stk1, stk2;
+        // stk1.push(root);
+        // while(!stk1.empty())
+        // {
+        //     TreeNode* node = stk1.top();
+        //     stk1.pop();
+        //     stk2.push(node);
+        //     if(node -> left) stk1.push(node -> left);
+        //     if(node -> right) stk1.push(node -> right);
+        // }
+        // while(!stk2.empty())
+        // {
+        //     postOrder.push_back(stk2.top() -> val);
+        //     stk2.pop();
+        // }
+        // return postOrder;
+
+        // iterative approach using one stack
+        TreeNode* curr = root;
+        stack<TreeNode*> stk;
+        vector<int> postOrder;
+        TreeNode* lastVisited = nullptr;
+
+        while (curr != nullptr || !stk.empty())
+        {
+            if (curr)
+            {
+                stk.push(curr);
+                curr = curr->left;
+            }
+            else
+            {
+                TreeNode* peek = stk.top();
+                if (peek->right && lastVisited != peek->right)
+                {
+                    curr = peek->right;
+                }
+                else
+                {
+                    postOrder.push_back(peek->val);
+                    lastVisited = peek;
+                    stk.pop();
+                }
+            }
+        }
+        return postOrder;
     }
 };
 
