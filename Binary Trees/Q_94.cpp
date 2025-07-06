@@ -36,26 +36,53 @@ public:
         // return res;
 
         // iterative approach
+        // vector<int> inOrder;
+        // TreeNode *node = root;
+        // stack<TreeNode *> stk;
+        // while (true)
+        // {
+        //     if (node)
+        //     {
+        //         stk.push(node);
+        //         node = node->left;
+        //     }
+        //     else
+        //     {
+        //         if (stk.empty())
+        //             break;
+        //         node = stk.top();
+        //         stk.pop();
+        //         inOrder.push_back(node->val);
+        //         node = node->right;
+        //     }
+        // }
+        // return inOrder;
+
+        // Morris Traversal
         vector<int> inOrder;
-        TreeNode *node = root;
-        stack<TreeNode *> stk;
-        while (true)
-        {
-            if (node)
-            {
-                stk.push(node);
-                node = node->left;
-            }
-            else
-            {
-                if (stk.empty())
-                    break;
-                node = stk.top();
-                stk.pop();
-                inOrder.push_back(node->val);
-                node = node->right;
+        TreeNode* curr = root;
+
+        while (curr != NULL) {
+            if (curr->left == NULL) {
+                inOrder.push_back(curr->val);
+                curr = curr->right;
+            } else {
+                TreeNode* prev = curr->left;
+                while (prev->right != NULL && prev->right != curr) {
+                    prev = prev->right;
+                }
+
+                if (prev->right == NULL) {
+                    prev->right = curr;  // Set thread
+                    curr = curr->left;
+                } else {
+                    prev->right = NULL;  // Remove thread
+                    inOrder.push_back(curr->val);
+                    curr = curr->right;
+                }
             }
         }
+
         return inOrder;
     }
 };
