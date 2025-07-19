@@ -5,7 +5,7 @@ using namespace std;
 
 class Solution {
 public:
-    vector<int> findOrder(int numCourses, vector<vector<int>>& prerequisites) {
+    bool canFinish(int numCourses, vector<vector<int>>& prerequisites) {
         vector<int> inOrder(numCourses, 0);
         vector<vector<int>> adj(numCourses);
 
@@ -32,43 +32,25 @@ public:
             }
         }
 
-        return (topo.size() == numCourses ? topo : vector<int>());
+        return topo.size() == numCourses;
     }
 };
 
-// ----------------------------------------
+// -----------------------------------
 // ✅ Driver Code
-// ----------------------------------------
+// -----------------------------------
 int main() {
     Solution sol;
 
     // Example 1: No cycle
     int numCourses1 = 4;
     vector<vector<int>> prerequisites1 = {{1, 0}, {2, 1}, {3, 2}};
-    vector<int> order1 = sol.findOrder(numCourses1, prerequisites1);
+    cout << "Can finish courses (Example 1)? " << sol.canFinish(numCourses1, prerequisites1) << endl;
 
-    cout << "Course Order (Example 1): ";
-    if (!order1.empty()) {
-        for (int course : order1)
-            cout << course << " ";
-    } else {
-        cout << "Cycle detected. No valid order.";
-    }
-    cout << endl;
-
-    // Example 2: With cycle
+    // Example 2: Cycle exists
     int numCourses2 = 3;
     vector<vector<int>> prerequisites2 = {{0, 1}, {1, 2}, {2, 0}};
-    vector<int> order2 = sol.findOrder(numCourses2, prerequisites2);
-
-    cout << "Course Order (Example 2): ";
-    if (!order2.empty()) {
-        for (int course : order2)
-            cout << course << " ";
-    } else {
-        cout << "Cycle detected. No valid order.";
-    }
-    cout << endl;
+    cout << "Can finish courses (Example 2)? " << sol.canFinish(numCourses2, prerequisites2) << endl;
 
     return 0;
 }
