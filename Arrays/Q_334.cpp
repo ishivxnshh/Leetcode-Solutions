@@ -10,23 +10,13 @@ public:
     bool increasingTriplet(vector<int>& nums) 
     {
         // (tc: O(n), sc: O(1))
-        int f = INT_MAX;  // First smallest element
-        int s = INT_MAX;  // Second smallest element
-
-        for (int num : nums) 
+        int first = INT_MAX;
+        int second = INT_MAX;
+        for (auto num : nums)
         {
-            if (num <= f) 
-            { 
-                f = num;  // Update first smallest
-            } 
-            else if (num <= s) 
-            { 
-                s = num;  // Update second smallest
-            } 
-            else 
-            { 
-                return true;  // Found third element larger than both
-            }
+            if (num <= first) first = num;
+            else if (num <= second) second = num;
+            else return true;
         }
         return false;
     }
