@@ -33,15 +33,15 @@ public:
 
 
         //Optimal approach
-        // int l = 0;
-        // for(int j=0;j<n;j++)
-        // {
-        //     if(nums[j]!=0)
-        //     {
-        //         swap(nums[j], nums[l]);
-        //         l++;
-        //     }
-        // }        
+        int l = 0;
+        for(int j=0;j<n;j++)
+        {
+            if(nums[j]!=0)
+            {
+                swap(nums[j], nums[l]);
+                l++;
+            }
+        }        
     }
 };
 int main()
