@@ -1,20 +1,31 @@
-#include <iostream>
+#include <bits/stdc++.h>
 
 using namespace std;
 
 class Solution {
 public:
+    int solve(int ind, vector<int> &dp)
+    {
+        if (ind <= 1) return 1;
+        if (dp[ind] != -1) return dp[ind];
+        return dp[ind] = solve(ind - 1, dp) + solve(ind - 2, dp);
+    }
+
     int climbStairs(int n) {
-        if (n <= 2)
-            return n;
-        int first = 1;
-        int second = 2;
-        for (int i = 3; i <= n; i++) {
-            int third = first + second;
-            first = second;
-            second = third;
-        }
-        return second;
+        // if (n <= 2)
+        //     return n;
+        // int first = 1;
+        // int second = 2;
+        // for (int i = 3; i <= n; i++) {
+        //     int third = first + second;
+        //     first = second;
+        //     second = third;
+        // }
+        // return second;
+
+        // Using DP
+        vector<int> dp(n + 1, -1);
+        return solve(n, dp);
     }
 };
 
